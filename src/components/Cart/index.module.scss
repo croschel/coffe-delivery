@@ -1,0 +1,27 @@
+@import '../../styles/variables.scss';
+
+.container {
+  padding: 8px;
+  background-color: $yellow-light;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 6px;
+
+  .countBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background-color: $yellow-dark;
+    color: $white;
+    position: absolute;
+    border: none;
+    border-radius: 50%;
+    top: -8px;
+    right: -8px;
+  }
+}

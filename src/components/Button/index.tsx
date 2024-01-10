@@ -6,11 +6,18 @@ interface Props {
   size: 'Tag' | 'M' | 'G';
   label?: string;
   icon?: ReactNode;
+  onClick: () => void;
 }
-export const Button: FC<Props> = ({ label = '', type, size, icon }) => {
+export const Button: FC<Props> = ({
+  label = '',
+  type,
+  size,
+  icon,
+  onClick,
+}) => {
   const btnStyle = cx(styles.container, styles[type], styles[`button${size}`]);
   return (
-    <button className={btnStyle}>
+    <button className={btnStyle} onClick={onClick}>
       <div className={styles.contentBtn}>
         {icon && icon}
         {type !== 'icon' && label}
