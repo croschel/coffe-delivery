@@ -38,6 +38,7 @@ export const InputText: FC<Props> = ({
         name={name}
         placeholder={placeholder}
         required={required}
+        disabled={disabled}
         type="text"
         value={value}
         onChange={handleChange}
