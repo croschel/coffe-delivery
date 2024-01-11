@@ -1,0 +1,51 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid $base-button;
+  border-radius: 4px;
+  background-color: $base-input;
+  transition: border 0.2s;
+
+  .optional {
+    font-size: 12px;
+    font-weight: 400;
+    color: $base-label;
+    font-style: italic;
+  }
+
+  &:hover {
+    border: 1px solid $yellow-dark;
+  }
+
+  &:active {
+    border: 1px solid $yellow-dark;
+  }
+
+  &.hasValidationError {
+    border: 1px solid $yellow-dark;
+  }
+
+  input {
+    &:disabled {
+      background-color: $base-hover;
+    }
+  }
+
+  input {
+    border: 0;
+    width: 100%;
+    @include textS;
+    color: $base-label;
+    background-color: $base-input;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
