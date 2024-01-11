@@ -17,7 +17,7 @@ export const Button: FC<Props> = ({
 }) => {
   const btnStyle = cx(styles.container, styles[type], styles[`button${size}`]);
   return (
-    <button className={btnStyle} onClick={onClick}>
+    <button role="button" className={btnStyle} onClick={onClick}>
       <div className={styles.contentBtn}>
         {icon && icon}
         {type !== 'icon' && label}

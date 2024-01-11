@@ -9,7 +9,7 @@ interface Props {
 
 export const Cart: FC<Props> = ({ itensCount, onClick }) => {
   return (
-    <button className={styles.container} onClick={onClick}>
+    <button role="button" className={styles.container} onClick={onClick}>
       <ShoppingCart weight="fill" size={22} color="#c47f17" />
       {itensCount > 0 && <div className={styles.countBox}>{itensCount}</div>}
     </button>
