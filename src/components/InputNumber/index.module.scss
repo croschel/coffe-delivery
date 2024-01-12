@@ -1,0 +1,42 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $base-button;
+  border-radius: 6px;
+  padding: 5.5px 8px;
+  max-width: 72px;
+  max-height: 32px;
+
+  & > span {
+    @include textM;
+    font-weight: 400;
+    color: $base-title;
+  }
+}
+
+.disabled {
+  background-color: $base-hover;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  width: 14px;
+  height: 14px;
+  font-size: 18px;
+  color: $purple;
+  border: none;
+  transition: color 0.6s;
+  &:hover {
+    color: $purple-dark;
+  }
+}
+
+.btnDisabled {
+}
