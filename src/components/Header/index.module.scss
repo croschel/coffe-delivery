@@ -1,0 +1,31 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.headerContainer {
+  display: flex;
+  flex-direction: row;
+  background-color: $background;
+  justify-content: space-between;
+  padding: 33px 0;
+
+  .rightSideContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+
+    .locationBox {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      border-radius: 6px;
+      background-color: $purple-light;
+      padding: 8px;
+
+      & > span {
+        @include textS;
+        color: $purple;
+      }
+    }
+  }
+}
