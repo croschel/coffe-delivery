@@ -4,6 +4,16 @@ import Expresso from '@/assets/Expresso.png';
 import Americano from '@/assets/Americano.png';
 import ExpCremoso from '@/assets/ExpressoCremoso.png';
 import ExpGelado from '@/assets/CafeGelado.png';
+import CoffeeMilk from '@/assets/CafeComLeite.png';
+import Latte from '@/assets/Latte.png';
+import Cappucino from '@/assets/Capuccino.png';
+import Macchiato from '@/assets/Macchiato.png';
+import Mocaccino from '@/assets/Mochaccino.png';
+import HotChocolate from '@/assets/ChocolateQuente.png';
+import Cubano from '@/assets/Cubano.png';
+import Havaiano from '@/assets/Havaiano.png';
+import Arabe from '@/assets/Arabe.png';
+import Irlandes from '@/assets/Irlandes.png';
 
 export const COFFEES: Coffee[] = [
   {
@@ -37,5 +47,89 @@ export const COFFEES: Coffee[] = [
     image: ExpGelado,
     tagType: [CoffeeType.TRADITIONAL, CoffeeType.COLD],
     value: 17.0,
+  },
+  {
+    id: '5',
+    title: 'Café com leite',
+    description: 'Meio a meio de expresso tradicional com leite vaporizado',
+    image: CoffeeMilk,
+    tagType: [CoffeeType.TRADITIONAL, CoffeeType.WITH_MILK],
+    value: 14.0,
+  },
+  {
+    id: '6',
+    title: 'Latte',
+    description:
+      'Uma dose de café expresso com o dobro de leite e espuma cremosa',
+    image: Latte,
+    tagType: [CoffeeType.TRADITIONAL, CoffeeType.WITH_MILK],
+    value: 18.0,
+  },
+  {
+    id: '7',
+    title: 'Cappucino',
+    description:
+      'Bebida com canela feita de doses iguais de café, leite e espuma',
+    image: Cappucino,
+    tagType: [CoffeeType.TRADITIONAL, CoffeeType.WITH_MILK],
+    value: 17.0,
+  },
+  {
+    id: '8',
+    title: 'Macchiato',
+    description:
+      'Café expresso misturado com um pouco de leite quente e espuma',
+    image: Macchiato,
+    tagType: [CoffeeType.TRADITIONAL, CoffeeType.WITH_MILK],
+    value: 18.0,
+  },
+  {
+    id: '9',
+    title: 'Mocaccino',
+    description: 'Café expresso com calda de chocolate, pouco leite e espuma',
+    image: Mocaccino,
+    tagType: [CoffeeType.TRADITIONAL, CoffeeType.WITH_MILK],
+    value: 16.0,
+  },
+  {
+    id: '10',
+    title: 'Chocolate Quente',
+    description: 'Bebida feita com chocolate dissolvido no leite quente e café',
+    image: HotChocolate,
+    tagType: [CoffeeType.SPECIAL, CoffeeType.WITH_MILK],
+    value: 19.0,
+  },
+  {
+    id: '11',
+    title: 'Cubano',
+    description:
+      'Drink gelado de café expresso com rum, creme de leite e hortelã',
+    image: Cubano,
+    tagType: [CoffeeType.SPECIAL, CoffeeType.ALCOOLIC, CoffeeType.WITH_MILK],
+    value: 16.0,
+  },
+  {
+    id: '12',
+    title: 'Havaino',
+    description: 'Bebida adocicada preparada com café e leite de coco',
+    image: Havaiano,
+    tagType: [CoffeeType.SPECIAL],
+    value: 22.0,
+  },
+  {
+    id: '13',
+    title: 'Árabe',
+    description: 'Bebida preparada com grãos de café árabe e especiarias',
+    image: Arabe,
+    tagType: [CoffeeType.SPECIAL],
+    value: 19.0,
+  },
+  {
+    id: '14',
+    title: 'Irlandês',
+    description: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',
+    image: Irlandes,
+    tagType: [CoffeeType.SPECIAL, CoffeeType.ALCOOLIC],
+    value: 19.0,
   },
 ];

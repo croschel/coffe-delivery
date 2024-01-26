@@ -33,8 +33,8 @@ export const CoffeeItem: FC<Props> = ({ coffee }) => {
       </div>
       <div className={styles.bottomActions}>
         <div className={styles.valueBox}>
-          <span className={styles.moneySymbol}>R$</span>{' '}
-          <span className={styles.value}>{coffee.value}</span>
+          <span className={styles.moneySymbol}>R$</span>
+          <span className={styles.value}>{coffee.value.toFixed(2)}</span>
         </div>
         <div className={styles.cartBox}>
           <InputNumber

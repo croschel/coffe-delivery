@@ -50,9 +50,12 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    gap: 23px;
+    gap: 20px;
 
     .valueBox {
+      display: flex;
+      align-items: center;
+      gap: 3px;
       color: $base-text;
       .moneySymbol {
         @include textS;
