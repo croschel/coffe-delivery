@@ -5,7 +5,7 @@
 
 // TYPOGRAPH TITLE
 @mixin titleXL {
-  @extend .titleFont;
+  @extend .titleFont !optional;
   font-size: 48px;
   font-weight: 800;
 }
