@@ -3,10 +3,11 @@
 
 .headerContainer {
   display: flex;
+  padding: 33px 160px;
   flex-direction: row;
   background-color: $background;
   justify-content: space-between;
-  padding: 33px 0;
+  z-index: 12;
 
   .rightSideContainer {
     display: flex;

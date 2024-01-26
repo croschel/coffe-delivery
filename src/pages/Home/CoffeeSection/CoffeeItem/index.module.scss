@@ -1,0 +1,71 @@
+@import '../../../../styles/variables.scss';
+@import '../../../../styles/mixins.scss';
+
+.coffeeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $base-card;
+  border: none;
+  border-radius: 6px 36px 6px 36px;
+  width: 256px;
+  height: 310px;
+  padding: 0 20px 20px 20px;
+
+  & > img {
+    width: 120px;
+    height: 120px;
+    margin-top: -20px;
+  }
+  .tagListBox {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    margin-top: 12px;
+
+    .tagType {
+      @include tagBtn;
+      background-color: $yellow-light;
+      color: $yellow-dark;
+      padding: 4px 8px;
+      border-radius: 100px;
+    }
+  }
+  .titleBox {
+    text-align: center;
+    margin-top: 16px;
+    margin-bottom: 32px;
+    & > h3 {
+      @include titleS;
+      color: $base-subtitle;
+    }
+    & > span {
+      @include textS;
+      color: $base-label;
+    }
+  }
+
+  .bottomActions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 23px;
+
+    .valueBox {
+      color: $base-text;
+      .moneySymbol {
+        @include textS;
+      }
+      .value {
+        @include titleM;
+        font-weight: 700;
+      }
+    }
+    .cartBox {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+    }
+  }
+}

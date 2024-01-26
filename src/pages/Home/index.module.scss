@@ -4,4 +4,9 @@
 .mainContainer {
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  width: 100%;
+  height: calc(100vh - 106px);
+  display: flex;
+  padding: 33px 160px;
 }

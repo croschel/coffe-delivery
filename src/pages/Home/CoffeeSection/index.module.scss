@@ -1,0 +1,20 @@
+@import '../../../styles/mixins.scss';
+
+.coffeeSecContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .coffeeTitle {
+    @include titleL;
+    margin-bottom: 54px;
+  }
+
+  .coffeeList {
+    display: flex;
+    flex-direction: row;
+    gap: 40px 32px;
+    flex: 1;
+    flex-wrap: wrap;
+  }
+}

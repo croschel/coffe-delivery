@@ -51,10 +51,10 @@
 
 .icon {
   padding: 8px;
-  background-color: $purple;
+  background-color: $purple-dark;
   transition: background-color 0.6s;
 
   &:hover {
-    background-color: $purple-dark;
+    background-color: darken($purple-dark, 10%);
   }
 }

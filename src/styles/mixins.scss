@@ -5,27 +5,27 @@
 
 // TYPOGRAPH TITLE
 @mixin titleXL {
-  @extend .titleFont !optional;
+  @include titleFont;
   font-size: 48px;
   font-weight: 800;
 }
 @mixin titleL {
-  @extend .titleFont;
+  @include titleFont;
   font-size: 32px;
   font-weight: 800;
 }
 @mixin titleM {
-  @extend .titleFont;
+  @include titleFont;
   font-size: 24px;
   font-weight: 800;
 }
 @mixin titleS {
-  @extend .titleFont;
+  @include titleFont;
   font-size: 20px;
   font-weight: 700;
 }
 @mixin titleXS {
-  @extend .titleFont;
+  @include titleFont;
   font-size: 18px;
   font-weight: 700;
 }

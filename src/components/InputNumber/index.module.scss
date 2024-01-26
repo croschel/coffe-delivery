@@ -8,8 +8,8 @@
   background-color: $base-button;
   border-radius: 6px;
   padding: 5.5px 8px;
-  max-width: 72px;
-  max-height: 32px;
+  width: 72px;
+  height: 38px;
 
   & > span {
     @include textM;
