@@ -2,11 +2,13 @@ import { ImageType } from '@/constants/images';
 import { MapPin } from '@phosphor-icons/react';
 import { Cart } from '../Cart';
 import styles from './index.module.scss';
+import { useNavigate } from 'react-router-dom';
 
 export const Header = () => {
-  const location = 'São Paulo, SP';
+  const navigate = useNavigate();
+  const location = 'São Paulo, SP'; // TODO - get location using an API
   const handleClickCart = () => {
-    // TODO - navigate to Cart page
+    navigate('/order');
   };
   return (
     <header className={styles.headerContainer}>
