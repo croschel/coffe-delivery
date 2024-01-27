@@ -6,6 +6,7 @@ import {
   RouterProvider,
   createBrowserRouter,
 } from 'react-router-dom';
+import { Confirmation } from '../Confirmation';
 const router = createBrowserRouter([
   {
     path: Pages.HOME,
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
   {
     path: Pages.ORDER,
     element: <Order />,
+  },
+  {
+    path: Pages.CONFIRMATION,
+    element: <Confirmation />,
   },
   {
     path: '*',

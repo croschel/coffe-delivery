@@ -1,0 +1,31 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.confirmationContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 0 160px;
+  gap: 40px;
+
+  .confirmationTitle {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    & > h2 {
+      @include titleL;
+      color: $yellow-dark;
+    }
+    & > span {
+      @include textL;
+      font-weight: 400;
+      color: $base-subtitle;
+    }
+  }
+
+  .banner {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    flex-wrap: wrap-reverse;
+  }
+}

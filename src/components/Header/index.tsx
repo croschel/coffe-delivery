@@ -3,12 +3,13 @@ import { MapPin } from '@phosphor-icons/react';
 import { Cart } from '../Cart';
 import styles from './index.module.scss';
 import { useNavigate } from 'react-router-dom';
+import { Pages } from '@/models/enum/pages';
 
 export const Header = () => {
   const navigate = useNavigate();
   const location = 'São Paulo, SP'; // TODO - get location using an API
   const handleClickCart = () => {
-    navigate('/order');
+    navigate(Pages.ORDER);
   };
   return (
     <header className={styles.headerContainer}>
