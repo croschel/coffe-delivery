@@ -1,0 +1,9 @@
+.mainOrder {
+  display: flex;
+  gap: 32px;
+  height: calc(100vh - 106px);
+  padding: 33px 160px;
+  overflow-y: auto;
+  flex: 1;
+  flex-wrap: wrap;
+}

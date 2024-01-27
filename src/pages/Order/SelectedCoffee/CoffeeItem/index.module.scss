@@ -1,0 +1,34 @@
+@import '../../../../styles/variables.scss';
+@import '../../../../styles/mixins.scss';
+
+.coffeeItem {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 32px;
+  border-bottom: 1px solid $base-button;
+
+  .coffeeRow {
+    display: flex;
+    gap: 20px;
+
+    & > img {
+      width: 64px;
+      height: 64px;
+    }
+    .actionBox {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .buttonBottom {
+        display: flex;
+        gap: 8px;
+      }
+    }
+  }
+
+  .coffeeValue {
+    @include textM;
+    color: $base-text;
+  }
+}

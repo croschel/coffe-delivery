@@ -1,5 +1,6 @@
 import { Pages } from '@/models/enum/pages';
 import { Home } from '@/pages/Home';
+import { Order } from '@/pages/Order';
 import {
   Navigate,
   RouterProvider,
@@ -9,6 +10,10 @@ const router = createBrowserRouter([
   {
     path: Pages.HOME,
     element: <Home />,
+  },
+  {
+    path: Pages.ORDER,
+    element: <Order />,
   },
   {
     path: '*',

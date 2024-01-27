@@ -1,0 +1,66 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/mixins.scss';
+
+.selectedCoffee {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .coffeeSectionTitle {
+    @include titleXS;
+    color: $base-subtitle;
+  }
+
+  .sectionConfirm {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    background-color: $base-card;
+    border: none;
+    min-width: 448px;
+    border-radius: 6px 44px 6px 44px;
+
+    .coffeeList {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .totalOrder {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 24px 0;
+
+      .regularOrderRow {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: $base-text;
+        & > span {
+          @include textS;
+          font-weight: 400;
+        }
+        & > p {
+          @include textM;
+          font-weight: 400;
+        }
+      }
+
+      .boldOrderRow {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: $base-subtitle;
+        & > span {
+          @include textL;
+          font-weight: 700;
+        }
+        & > p {
+          @include textL;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}

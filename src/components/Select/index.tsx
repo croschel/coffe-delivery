@@ -9,12 +9,12 @@ interface Props {
   onSelect: (value: string) => void;
 }
 
-export const Select: FC<Props> = ({ selected, label, icon }) => {
+export const Select: FC<Props> = ({ selected, label, icon, onSelect }) => {
   const btnStyle = cx(styles.container, {
     [styles.selected]: selected,
   });
   return (
-    <button className={btnStyle}>
+    <button className={btnStyle} onClick={() => onSelect(label)}>
       <div className={styles.contentBtn}>
         {!!icon && icon}
         {label}

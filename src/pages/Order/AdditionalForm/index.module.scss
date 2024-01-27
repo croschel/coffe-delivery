@@ -1,0 +1,62 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/mixins.scss';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+
+  .formSectionTitle {
+    @include titleXS;
+    color: $base-subtitle;
+  }
+
+  .formSection {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    background-color: $base-card;
+    border: none;
+    border-radius: 6px;
+    gap: 32px;
+
+    .formFields {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      .formRow {
+        display: flex;
+        gap: 12px;
+      }
+    }
+  }
+}
+
+.titleBox {
+  display: flex;
+  gap: 8px;
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    & > h3 {
+      @include textM;
+      font-weight: 400;
+      color: $base-subtitle;
+    }
+    & > span {
+      @include textS;
+      font-weight: 400;
+      color: $base-text;
+    }
+  }
+}
+
+.paymentBox {
+  display: flex;
+  gap: 12px;
+}

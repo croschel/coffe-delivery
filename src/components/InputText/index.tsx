@@ -3,11 +3,12 @@ import cx from 'classnames';
 import styles from './index.module.scss';
 
 interface Props {
-  value: string;
   name: string;
   placeholder: string;
   required: boolean;
   disabled: boolean;
+  width?: number;
+  value?: string;
   onChange?: (value: string) => void;
   hasError?: boolean;
   controlled?: boolean;
@@ -19,6 +20,7 @@ export const InputText: FC<Props> = ({
   placeholder,
   required,
   disabled,
+  width,
   onChange = () => {},
   hasError = false,
   controlled = true,
@@ -33,14 +35,16 @@ export const InputText: FC<Props> = ({
   });
 
   return (
-    <div className={inputContainerStyles}>
+    <div
+      className={inputContainerStyles}
+      style={{ maxWidth: width ? `${width}px` : '100%' }}
+    >
       <input
         name={name}
         placeholder={placeholder}
-        required={required}
         disabled={disabled}
         type="text"
-        value={value}
+        value={controlled ? value : ''}
         onChange={handleChange}
       />
       {!required && <span className={styles.optional}>Opcional</span>}
