@@ -7,5 +7,5 @@ export interface Coffee {
   image: string;
   description: string;
   value: number;
-  qnt: number;
+  amount: number;
 }

@@ -1,25 +1,24 @@
 import { Coffee } from '@/models/interfaces/coffee';
-import { FC, useState } from 'react';
+import { FC, useContext } from 'react';
 import styles from './index.module.scss';
 import { InputNumber } from '@/components/InputNumber';
 import { Button } from '@/components/Button';
 import { Trash } from '@phosphor-icons/react';
 import { formatCurrencyReal } from '@/utils/format';
+import { OrderContext } from '@/contexts/OrderContext';
 
 interface Props {
   coffee: Coffee;
 }
 
 export const CoffeeItem: FC<Props> = ({ coffee }) => {
-  const [qntCoffee, setQndCoffee] = useState<number>(0);
+  const { handleChangeOrder, removeCoffeeFromList, orderList } =
+    useContext(OrderContext);
+  const coffeeIndex = orderList.findIndex((order) => order.id === coffee.id);
+  const coffeeItemAmount = orderList[coffeeIndex]?.amount ?? 0;
 
-  const handleChangeCoffee = (value: number) => {
-    setQndCoffee(value);
-  };
-
-  const handleRemoveCoffee = () => {
-    // TODO - remove coffe
-    console.log('Remove Coffee');
+  const handleChangeCoffee = (amount: number) => {
+    handleChangeOrder(amount, coffee);
   };
 
   return (
@@ -31,7 +30,7 @@ export const CoffeeItem: FC<Props> = ({ coffee }) => {
           <div className={styles.buttonBottom}>
             <InputNumber
               maxNumber={4}
-              value={qntCoffee}
+              value={coffeeItemAmount}
               onChange={handleChangeCoffee}
             />
             <Button
@@ -39,7 +38,7 @@ export const CoffeeItem: FC<Props> = ({ coffee }) => {
               size="M"
               type="secondary"
               icon={<Trash color="#8047f8" size={16} />}
-              onClick={handleRemoveCoffee}
+              onClick={() => removeCoffeeFromList(coffee)}
             />
           </div>
         </div>

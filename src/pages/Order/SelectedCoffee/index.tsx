@@ -1,13 +1,13 @@
 import { pageLabels } from '@/constants/labels';
 import styles from './index.module.scss';
-import { COFFEES } from '@/constants/coffees';
-import { Coffee } from '@/models/interfaces/coffee';
 import { CoffeeItem } from './CoffeeItem';
 import { formatCurrencyReal } from '@/utils/format';
 import { Button } from '@/components/Button';
+import { useContext } from 'react';
+import { OrderContext } from '@/contexts/OrderContext';
 
 export const SelectedCoffee = () => {
-  const coffeeMock: Coffee[] = [COFFEES[0], COFFEES[1]];
+  const { orderList } = useContext(OrderContext);
 
   const handleSubmitOrder = () => {
     // TODO - submit order
@@ -19,7 +19,7 @@ export const SelectedCoffee = () => {
       </h2>
       <section className={styles.sectionConfirm}>
         <div className={styles.coffeeList}>
-          {coffeeMock.map((coffee) => (
+          {orderList.map((coffee) => (
             <CoffeeItem key={coffee.id} coffee={coffee} />
           ))}
         </div>
