@@ -8,5 +8,4 @@ export interface OrderForm {
   [OrderFormEnum.BAIRRO]: string;
   [OrderFormEnum.CIDADE]: string;
   [OrderFormEnum.UF]: string;
-  [OrderFormEnum.PAGAMENTO]: string;
 }

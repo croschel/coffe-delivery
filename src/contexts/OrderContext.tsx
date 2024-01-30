@@ -1,11 +1,14 @@
 import { Pages } from '@/models/enum/pages';
+import { PaymentMethods } from '@/models/enum/paymentMethods';
 import { Coffee } from '@/models/interfaces/coffee';
 import { ReactNode, createContext, useState } from 'react';
 
 export interface OrderContextAttr {
   orderList: Coffee[];
+  paymentMethod: PaymentMethods | '';
   handleChangeOrder: (newAmount: number, coffee: Coffee) => void;
   removeCoffeeFromList: (coffee: Coffee) => void;
+  handleSelectPayment: (value: string) => void;
 }
 
 export interface Props {
@@ -17,6 +20,7 @@ export const OrderContext = createContext({} as OrderContextAttr);
 export const CoffeeContextProvider = ({ children }: Props) => {
   const location = window.location.pathname;
   const [orderList, setOrderList] = useState<Coffee[]>([]);
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethods | ''>('');
 
   const removeCoffeeFromList = (coffee: Coffee) => {
     setOrderList((prevState) =>
@@ -51,9 +55,21 @@ export const CoffeeContextProvider = ({ children }: Props) => {
       return newOrder;
     });
   };
+
+  const handleSelectPayment = (value: string) => {
+    setPaymentMethod((prevState) =>
+      value === prevState ? '' : (value as PaymentMethods),
+    );
+  };
   return (
     <OrderContext.Provider
-      value={{ orderList, handleChangeOrder, removeCoffeeFromList }}
+      value={{
+        orderList,
+        paymentMethod,
+        handleChangeOrder,
+        removeCoffeeFromList,
+        handleSelectPayment,
+      }}
     >
       {children}
     </OrderContext.Provider>

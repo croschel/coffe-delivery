@@ -7,6 +7,7 @@ interface Props {
   label?: string;
   icon?: ReactNode;
   onClick: () => void;
+  disabled?: boolean;
 }
 export const Button: FC<Props> = ({
   label = '',
@@ -14,10 +15,16 @@ export const Button: FC<Props> = ({
   size,
   icon,
   onClick,
+  disabled,
 }) => {
   const btnStyle = cx(styles.container, styles[type], styles[`button${size}`]);
   return (
-    <button role="button" className={btnStyle} onClick={onClick}>
+    <button
+      disabled={disabled}
+      role="button"
+      className={btnStyle}
+      onClick={onClick}
+    >
       <div className={styles.contentBtn}>
         {icon && icon}
         {type !== 'icon' && label}

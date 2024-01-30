@@ -3,14 +3,34 @@ import styles from './index.module.scss';
 import { CoffeeItem } from './CoffeeItem';
 import { formatCurrencyReal } from '@/utils/format';
 import { Button } from '@/components/Button';
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import { OrderContext } from '@/contexts/OrderContext';
+import { useFormContext } from 'react-hook-form';
+import { OrderForm } from '@/models/interfaces/orderForm';
+import { Order } from '@/models/interfaces/order';
+import { createNewId } from '@/utils/generators';
 
 export const SelectedCoffee = () => {
-  const { orderList } = useContext(OrderContext);
+  const { handleSubmit, formState } = useFormContext();
+  const { orderList, paymentMethod } = useContext(OrderContext);
 
-  const handleSubmitOrder = () => {
-    // TODO - submit order
+  const orderIsReady = useMemo(
+    () =>
+      Object.values(formState.errors).length === 0 &&
+      paymentMethod.length > 0 &&
+      orderList.length > 0,
+    [orderList, paymentMethod, formState.errors],
+  );
+
+  const handleSubmitOrder = (formAddressValues: unknown) => {
+    if (!orderIsReady) return;
+    const newOrder: Order = {
+      id: createNewId(),
+      coffeeList: orderList,
+      address: formAddressValues as OrderForm,
+      payment: paymentMethod,
+    };
+    console.log(newOrder);
   };
   return (
     <div className={styles.selectedCoffee}>
@@ -41,7 +61,8 @@ export const SelectedCoffee = () => {
           label="confirmar pedido"
           size="M"
           type="primary"
-          onClick={handleSubmitOrder}
+          onClick={handleSubmit(handleSubmitOrder)}
+          disabled={orderList.length === 0}
         />
       </section>
     </div>

@@ -10,15 +10,14 @@ import {
   MapPinLine,
   Money,
 } from '@phosphor-icons/react';
-import { useState } from 'react';
 import styles from './index.module.scss';
+import { useFormContext } from 'react-hook-form';
+import { useContext } from 'react';
+import { OrderContext } from '@/contexts/OrderContext';
 
 export const AddditionalForm = () => {
-  const [paymentMethod, setPaymentMethod] = useState<PaymentMethods | ''>('');
-  const handleSelectPayment = (value: string) => {
-    console.log(value);
-    setPaymentMethod(value as PaymentMethods);
-  };
+  const { register, formState } = useFormContext();
+  const { paymentMethod, handleSelectPayment } = useContext(OrderContext);
   return (
     <div className={styles.form}>
       <h2 className={styles.formSectionTitle}>
@@ -40,6 +39,8 @@ export const AddditionalForm = () => {
             required
             controlled={false}
             width={200}
+            register={register}
+            hasError={formState.errors[OrderFormEnum.CEP] !== undefined}
           />
           <InputText
             name={OrderFormEnum.RUA}
@@ -47,6 +48,8 @@ export const AddditionalForm = () => {
             placeholder="Rua"
             required
             controlled={false}
+            register={register}
+            hasError={formState.errors[OrderFormEnum.RUA] !== undefined}
           />
           <div className={styles.formRow}>
             <InputText
@@ -56,6 +59,8 @@ export const AddditionalForm = () => {
               required
               controlled={false}
               width={200}
+              register={register}
+              hasError={formState.errors[OrderFormEnum.NUMERO] !== undefined}
             />
             <InputText
               name={OrderFormEnum.COMPLEMENTO}
@@ -63,6 +68,7 @@ export const AddditionalForm = () => {
               placeholder="Complemento"
               required={false}
               controlled={false}
+              register={register}
             />
           </div>
           <div className={styles.formRow}>
@@ -73,6 +79,8 @@ export const AddditionalForm = () => {
               required
               controlled={false}
               width={200}
+              register={register}
+              hasError={formState.errors[OrderFormEnum.BAIRRO] !== undefined}
             />
             <InputText
               name={OrderFormEnum.CIDADE}
@@ -80,6 +88,8 @@ export const AddditionalForm = () => {
               placeholder="Cidade"
               required
               controlled={false}
+              register={register}
+              hasError={formState.errors[OrderFormEnum.CIDADE] !== undefined}
             />
             <InputText
               name={OrderFormEnum.UF}
@@ -88,6 +98,8 @@ export const AddditionalForm = () => {
               required
               controlled={false}
               width={60}
+              register={register}
+              hasError={formState.errors[OrderFormEnum.UF] !== undefined}
             />
           </div>
         </div>
