@@ -1,9 +1,14 @@
 import { Pages } from '@/models/enum/pages';
 import { PaymentMethods } from '@/models/enum/paymentMethods';
 import { Coffee } from '@/models/interfaces/coffee';
+import { Order } from '@/models/interfaces/order';
+import { OrderForm } from '@/models/interfaces/orderForm';
+import { createNewId } from '@/utils/generators';
 import { ReactNode, createContext, useState } from 'react';
 
 export interface OrderContextAttr {
+  order: Order;
+  saveOrder: (formAddressValues: OrderForm) => void;
   orderList: Coffee[];
   paymentMethod: PaymentMethods | '';
   handleChangeOrder: (newAmount: number, coffee: Coffee) => void;
@@ -21,6 +26,7 @@ export const CoffeeContextProvider = ({ children }: Props) => {
   const location = window.location.pathname;
   const [orderList, setOrderList] = useState<Coffee[]>([]);
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethods | ''>('');
+  const [order, setOrder] = useState<Order>({} as Order);
 
   const removeCoffeeFromList = (coffee: Coffee) => {
     setOrderList((prevState) =>
@@ -61,9 +67,21 @@ export const CoffeeContextProvider = ({ children }: Props) => {
       value === prevState ? '' : (value as PaymentMethods),
     );
   };
+
+  const saveOrder = (formAddressValues: OrderForm) => {
+    const newOrder: Order = {
+      id: createNewId(),
+      coffeeList: orderList,
+      address: formAddressValues as OrderForm,
+      payment: paymentMethod,
+    };
+    setOrder(newOrder);
+  };
   return (
     <OrderContext.Provider
       value={{
+        order,
+        saveOrder,
         orderList,
         paymentMethod,
         handleChangeOrder,

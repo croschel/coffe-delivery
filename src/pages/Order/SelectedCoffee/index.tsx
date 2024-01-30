@@ -7,12 +7,13 @@ import { useContext, useMemo } from 'react';
 import { OrderContext } from '@/contexts/OrderContext';
 import { useFormContext } from 'react-hook-form';
 import { OrderForm } from '@/models/interfaces/orderForm';
-import { Order } from '@/models/interfaces/order';
-import { createNewId } from '@/utils/generators';
+import { useNavigate } from 'react-router-dom';
+import { Pages } from '@/models/enum/pages';
 
 export const SelectedCoffee = () => {
+  const navigate = useNavigate();
   const { handleSubmit, formState } = useFormContext();
-  const { orderList, paymentMethod } = useContext(OrderContext);
+  const { orderList, paymentMethod, saveOrder } = useContext(OrderContext);
 
   const orderIsReady = useMemo(
     () =>
@@ -22,15 +23,10 @@ export const SelectedCoffee = () => {
     [orderList, paymentMethod, formState.errors],
   );
 
-  const handleSubmitOrder = (formAddressValues: unknown) => {
+  const handleSubmitOrder = (formAddressValues: OrderForm) => {
     if (!orderIsReady) return;
-    const newOrder: Order = {
-      id: createNewId(),
-      coffeeList: orderList,
-      address: formAddressValues as OrderForm,
-      payment: paymentMethod,
-    };
-    console.log(newOrder);
+    saveOrder(formAddressValues);
+    navigate(Pages.CONFIRMATION);
   };
   return (
     <div className={styles.selectedCoffee}>
@@ -61,6 +57,8 @@ export const SelectedCoffee = () => {
           label="confirmar pedido"
           size="M"
           type="primary"
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-expect-error
           onClick={handleSubmit(handleSubmitOrder)}
           disabled={orderList.length === 0}
         />

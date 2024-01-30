@@ -1,15 +1,13 @@
 import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react';
 import styles from './index.module.scss';
 import { pageLabels } from '@/constants/labels';
+import { useContext } from 'react';
+import { OrderContext } from '@/contexts/OrderContext';
 
 export const FinalInformation = () => {
-  const street = 'Rua João Daniel Martinelli, 102';
-  const neighborhood = 'Farrapos';
-  const city = 'Porto Alegre';
-  const uf = 'RS';
-  const address = `${neighborhood} - ${city}, ${uf}`;
+  const { order } = useContext(OrderContext);
+  const address = `${order.address.bairro} - ${order.address.cidade}, ${order.address.uf}`;
   const estimationDelivery = '20 min - 30 min';
-  const paymentMethod = 'Cartão de Crédito';
 
   return (
     <div className={styles.card}>
@@ -19,7 +17,8 @@ export const FinalInformation = () => {
         </div>
         <div className={styles.regularCardInfo}>
           <span>
-            {pageLabels.confirmation.orderOn} <strong>{street}</strong>
+            {pageLabels.confirmation.orderOn}{' '}
+            <strong>{order.address.rua}</strong>
           </span>
           <p>{address}</p>
         </div>
@@ -42,7 +41,7 @@ export const FinalInformation = () => {
         <div className={styles.regularCardInfo}>
           <span>{pageLabels.confirmation.paymentOnPlace}</span>
           <p>
-            <strong>{paymentMethod}</strong>
+            <strong>{order.payment}</strong>
           </p>
         </div>
       </div>
