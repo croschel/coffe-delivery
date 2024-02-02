@@ -4,7 +4,7 @@ import { Coffee } from '@/models/interfaces/coffee';
 import { Order } from '@/models/interfaces/order';
 import { OrderForm } from '@/models/interfaces/orderForm';
 import { createNewId } from '@/utils/generators';
-import { ReactNode, createContext, useState } from 'react';
+import { ReactNode, createContext, useMemo, useState } from 'react';
 
 export interface OrderContextAttr {
   order: Order;
@@ -14,6 +14,7 @@ export interface OrderContextAttr {
   handleChangeOrder: (newAmount: number, coffee: Coffee) => void;
   removeCoffeeFromList: (coffee: Coffee) => void;
   handleSelectPayment: (value: string) => void;
+  totalOrder: number;
 }
 
 export interface Props {
@@ -27,6 +28,12 @@ export const CoffeeContextProvider = ({ children }: Props) => {
   const [orderList, setOrderList] = useState<Coffee[]>([]);
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethods | ''>('');
   const [order, setOrder] = useState<Order>({} as Order);
+
+  const totalOrder = useMemo(
+    () =>
+      orderList.reduce((acc, coffee) => coffee.amount * coffee.value + acc, 0),
+    [orderList],
+  );
 
   const removeCoffeeFromList = (coffee: Coffee) => {
     setOrderList((prevState) =>
@@ -87,6 +94,7 @@ export const CoffeeContextProvider = ({ children }: Props) => {
         handleChangeOrder,
         removeCoffeeFromList,
         handleSelectPayment,
+        totalOrder,
       }}
     >
       {children}

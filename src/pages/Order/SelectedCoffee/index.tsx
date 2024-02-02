@@ -13,7 +13,8 @@ import { Pages } from '@/models/enum/pages';
 export const SelectedCoffee = () => {
   const navigate = useNavigate();
   const { handleSubmit, formState } = useFormContext();
-  const { orderList, paymentMethod, saveOrder } = useContext(OrderContext);
+  const { orderList, paymentMethod, saveOrder, totalOrder } =
+    useContext(OrderContext);
 
   const orderIsReady = useMemo(
     () =>
@@ -50,7 +51,7 @@ export const SelectedCoffee = () => {
           </div>
           <div className={styles.boldOrderRow}>
             <span>{pageLabels.order.total}</span>
-            <p>{formatCurrencyReal(33.2)}</p>
+            <p>{formatCurrencyReal(totalOrder)}</p>
           </div>
         </div>
         <Button
